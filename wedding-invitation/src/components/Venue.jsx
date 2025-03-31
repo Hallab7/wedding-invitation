@@ -8,7 +8,7 @@ const Venue = () => (
     </h3>
 
     <p className="flex items-center gap-2 mb-2 text-gray-800">
-      <FaClock className="text-purple-700" /> Arrival: 9:00 AM | Program Start: 10:00 PM
+      <FaClock className="text-purple-700" /> Arrival: 8:00 AM | Program Start: 9:00 AM
     </p>
 
     <p className="flex items-center gap-2 mb-4 text-gray-800">

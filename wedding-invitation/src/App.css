@@ -35,15 +35,16 @@ align-items: center; */
 }
 
 .rsvp input, .rsvp select, .rsvp button {
-  padding: 12px;
-  border-radius: 5px;
-  border: 1px solid #D8BFD8;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #6A0DAD;
 }
 
 .rsvp button {
   background-color: #6A0DAD;
   color: white;
   border: none;
+  cursor: pointer;
 }
 
 .gallery {
@@ -160,7 +161,7 @@ body {
 
 footer {
   text-align: center;
-  padding: 20px;
+  padding: 7px 0;
   background-color: #6A0DAD; /* Purple */
   color: white;
 }
@@ -198,12 +199,17 @@ footer {
 }
 
 /* For larger screens */
-@media (min-width: 768px) {
+@media (min-width: 768px) and (max-width: 1023px) {
+  .countdown-container {
+    grid-template-columns: repeat(4, 1fr); /* 4 per row on bigger screens */
+  }
+ 
+}
+@media (min-width: 1024px) {
   .countdown-container {
     grid-template-columns: repeat(4, 1fr); /* 4 per row on bigger screens */
   }
 }
-
 .greeting {
   margin-top: 0;
 }
@@ -301,4 +307,18 @@ section .dress-code {
 
 .modal-content button:hover {
   background: #520a7d;
+}
+
+@media (max-width: 768px) {
+
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 90%;
+    max-width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+ 
 }

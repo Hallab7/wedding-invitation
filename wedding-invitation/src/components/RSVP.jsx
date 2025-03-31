@@ -4,18 +4,44 @@ const RSVP = () => {
   const [formData, setFormData] = useState({ name: '', email: '', attending: 'yes' });
   const [showModal, setShowModal] = useState(false);
 
+  const TELEGRAM_BOT_TOKEN = "7986937964:AAFWc3WNcr2XKx6Dtl-VIjwQM2QZodGVFSQ";
+  const TELEGRAM_CHAT_ID = "5904861631";
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setShowModal(true); // Show modal instead of alert
+  const sendToTelegram = async (data) => {
+    const message = `📩 New RSVP Submission\n\n👤 Name: ${data.name}\n📧 Email: ${data.email}\n🎉 Attending: ${data.attending}`;
+    
+    const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+    await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: message }),
+    });
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    // Send RSVP to Telegram
+    await sendToTelegram(formData);
+    // Send email only if attending
+    if (formData.attending === "yes") {
+      await fetch("https://my-rsvp-app.vercel.app/api/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+    }
+    setShowModal(true);
+    
+  };
+  
   const closeModal = () => {
     setShowModal(false);
-    setFormData({ name: '', email: '', attending: 'yes' }); // Reset form after closing modal
+    setFormData({ name: '', email: '', attending: 'yes' });
   };
 
   return (

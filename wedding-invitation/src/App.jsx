@@ -9,14 +9,13 @@ import RSVP from './components/RSVP';
 import Landmark from './components/Landmark';
 
 function App() {
-  const weddingDate = new Date('2025-05-31T15:00:00'); // Update your wedding date here
+  const weddingDate = new Date('2025-05-31T00:00:00'); // Update your wedding date here
 
   return (
     <div className="App">
       <header className="header">
-        <h2>Join Us in Witnesssing Our</h2>
-        <h2>Aqeedu Nikkah </h2>
-        <h2>Naheemah 
+        <h2>Join Us in Witnesssing Our<br />Aqeedu Nikkah </h2>
+        <h2>Naheemah <br className='break' />
           <span className='love'
             role="img" 
             aria-label="love" 
@@ -24,7 +23,7 @@ function App() {
               fontSize: '2rem', 
               animation: 'blink 2s infinite'
             }}
-          >💜</span>
+          >💜</span> <br/>
 
          
         Abdulateef</h2>
@@ -41,7 +40,7 @@ function App() {
 
       <footer>
         <p>We can't wait to celebrate with you!
-          <span role="img" aria-label="celebration" style={{ fontSize: '2rem', marginLeft: '10px' }}>🎉</span>
+          <span role="img" aria-label="celebration" style={{ fontSize: '1rem'}}>🎉</span>
           
         </p>
       </footer>
